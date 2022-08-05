@@ -1,0 +1,14 @@
+<form method="post" action="/news/{{data.slug}}?_method=PUT">
+  <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">name</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" name="name" value="{{data.name}}">
+  </div>
+  <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">description</label>
+  <textarea class="form-control" id="exampleFormControlInput1" name="description">{{data.description}}</textarea>
+  </div>
+  </div>
+  <div>
+    <input type="submit" class="mb-3" value="Update" id="">
+  </div>
+</form>

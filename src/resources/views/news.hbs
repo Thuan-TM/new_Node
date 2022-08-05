@@ -1,0 +1,43 @@
+<div class="mt-4">
+    <p>Danh sach NYC</p>
+    {{#each course}}
+        <ul>
+            <li><a href="/news/{{this.name}}">{{this.name}}</a></li>
+            <li>{{this.description}}</li>
+            <li> 
+                <button><a href="/news/{{this.slug}}/edit">Sua</a></button>
+                <button id="btn_delete" data-id="{{this._id}}"> Xoa</button>
+            </li>
+        </ul>
+    {{/each}}
+</div>
+{{!-- confirm --}}
+<div class="confirm_delete">
+    <h2>Ban co thuc su muon xoa?</h2>
+    <div>
+        <button class="confirm">Xoa</button>
+        <button onclick="document.querySelector('.confirm_delete').classList.remove('show')">Huy</button>
+    </div>
+</div>
+
+{{!--  --}}
+<form name="Delete" method="post" ></form>
+<script>
+    const btn = document.querySelectorAll('#btn_delete')
+    const formDelete = document.forms['Delete']
+    const confirm = document.querySelector('.confirm')
+    var id
+    console.log(formDelete)
+    console.log(btn)
+    btn.forEach(e=>{
+        e.addEventListener('click', ()=>{
+            document.querySelector('.confirm_delete').classList.add('show')
+            id = e.getAttribute('data-id')
+        })
+    })
+
+    confirm.addEventListener('click', ()=>{
+        formDelete.action = "/news/"+id +"?_method=DELETE"
+        formDelete.submit()
+    })
+</script>
